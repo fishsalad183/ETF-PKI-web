@@ -1,4 +1,10 @@
-import { createApp } from 'vue';
+import { createApp, h } from 'vue';
 import App from './App.vue';
+import router from './router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-createApp(App).mount('#app');
+createApp({
+  render: () => h(App),
+})
+  .use(router)
+  .mount('#app');
