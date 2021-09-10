@@ -1,13 +1,17 @@
 <template lang="html">
   <section class="products">
-    <h1>products Component</h1>
+    <HexagonalGrid/>
   </section>
 </template>
 
 <script lang="js">
+import HexagonalGrid from '../components/HexagonalGrid.vue';
 
 export default {
   name: 'products',
+  components: {
+    HexagonalGrid,
+  },
   props: [],
   mounted() {
 

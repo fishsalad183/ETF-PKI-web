@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="container about">
-    <div class="row m-3">
+    <div class="row m-4">
       <p class="col">
         Pčelarska kuća „Medenjaci“ se snabdeva najfinijim pčelinjim proizvodima direktno
         iz sela za koje sigurno nikad niste čuli.
@@ -11,8 +11,8 @@
         Hvala!
       </p>
     </div>
-    <div class="row-fluid">
-      <img class="img-fluid m-5" style="max-width: 30%" src="../assets/logo_crop.png"/>
+    <div class="row">
+      <img class="img-fluid m-4 mx-auto logo" src="../assets/logo_crop.png"/>
     </div>
   </section>
 </template>
@@ -42,8 +42,9 @@ export default {
 
 <style scoped>
 .about {
+  text-align: justify;
 }
-/* .logo-center {
-  max-width: 30%;
-} */
+.logo {
+  max-width: 40%;
+}
 </style>
