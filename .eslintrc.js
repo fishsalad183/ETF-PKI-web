@@ -16,6 +16,6 @@ module.exports = {
     'linebreak-style': 0,
     'operator-linebreak': 0,
     // 'max-len': ['warn', { "code": 400, "ignoreString": true, "ignoreUrls": true, "ignoreTemplateLiterals": true }]
-    'max-len': ['warn', 200],
+    'max-len': ['warn', 300],
   },
 };

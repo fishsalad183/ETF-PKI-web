@@ -1,65 +1,96 @@
 const images = require.context('./images', true, /\.png$/);
 
-const data = {
-  products: [
-    {
-      id: 1,
-      title: 'Bagremov med',
-      description: '...',
-      src: images('./proizvod_bagremov_med.png'),
-    },
-    {
-      id: 2,
-      title: 'Lipov med',
-      description: '...',
-      src: images('./proizvod_lipov_med.png'),
-    },
-    {
-      id: 3,
-      title: 'Livadski med',
-      description: '...',
-      src: images('./proizvod_livadski_med.png'),
-    },
-    {
-      id: 4,
-      title: 'Medovača',
-      description: '...',
-      src: images('./proizvod_medovaca.png'),
-    },
-    {
-      id: 5,
-      title: 'Mleč',
-      description: '...',
-      src: images('./proizvod_mlec_med.png'),
-    },
-    {
-      id: 6,
-      title: 'Šumski med',
-      description: '...',
-      src: images('./proizvod_sumski_med.png'),
-    },
-  ],
-  users: [
-    {
-      id: 1,
-      name: 'Petar',
-      lastName: 'Petrović',
-      phone: '0123456789',
-      address: 'Njegoseva 42',
-      type: 'customer',
-      username: 'user123',
-      password: 'pass123',
-    },
-    {
-      id: 1,
-      name: 'Jovan',
-      lastName: 'Jovanović',
-      phone: '9876543210',
-      address: 'Neka ulica 123',
-      type: 'salesman',
-      username: 'user123',
-      password: 'pass123',
-    },
-  ],
-};
-export default data;
+const products = [
+  {
+    id: 1,
+    name: 'Bagremov med 0.5kg',
+    description: 'Bagremov med karakterišu prozirna žućkasta boja, veoma nežan ukus i izuzetno blagotvorno dejstvo na organiyam. Pogotovo se preporučuje u slučaju respiratornih i gastrointestinalnih problema.',
+    src: images('./proizvod_bagremov_med.png'),
+    price: 420,
+  },
+  {
+    id: 2,
+    name: 'Bagremov med 1kg',
+    description: 'Bagremov med karakterišu prozirna žućkasta boja, veoma nežan ukus i izuzetno blagotvorno dejstvo na organiyam. Pogotovo se preporučuje u slučaju respiratornih i gastrointestinalnih problema.',
+    src: images('./proizvod_bagremov_med.png'),
+    price: 810,
+  },
+  {
+    id: 3,
+    name: 'Lipov med 0.5kg',
+    description: '...',
+    src: images('./proizvod_lipov_med.png'),
+    price: 450,
+  },
+  {
+    id: 4,
+    name: 'Lipov med 1kg',
+    description: '...',
+    src: images('./proizvod_lipov_med.png'),
+    price: 880,
+  },
+  {
+    id: 5,
+    name: 'Livadski med 0.5kg',
+    description: '...',
+    src: images('./proizvod_livadski_med.png'),
+    price: 450,
+    discountPrice: 390,
+  },
+  {
+    id: 6,
+    name: 'Livadski med 1kg',
+    description: '...',
+    src: images('./proizvod_livadski_med.png'),
+    price: 870,
+  },
+  {
+    id: 7,
+    name: 'Šumski med 0.5kg',
+    description: '...',
+    src: images('./proizvod_sumski_med.png'),
+    price: 490,
+    discountPrice: 430,
+  },
+  {
+    id: 8,
+    name: 'Šumski med 1kg',
+    description: '...',
+    src: images('./proizvod_sumski_med.png'),
+    price: 950,
+    discountPrice: 890,
+  },
+  {
+    id: 9,
+    name: 'Mleč 1kg',
+    description: '...',
+    src: images('./proizvod_mlec.png'),
+    price: 1890,
+    discountPrice: 1690,
+  },
+  {
+    id: 10,
+    name: 'Mleč 1kg',
+    description: '...',
+    src: images('./proizvod_mlec.png'),
+    price: 1890,
+    discountPrice: 1690,
+  },
+  {
+    id: 11,
+    name: 'Medovača 0.5L',
+    description: '...',
+    src: images('./proizvod_medovaca.png'),
+    price: 690,
+  },
+  {
+    id: 12,
+    name: 'Medovača 1L',
+    description: '...',
+    src: images('./proizvod_medovaca.png'),
+    price: 1290,
+    discountPrice: 1190,
+  },
+];
+
+export default products;
