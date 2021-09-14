@@ -3,17 +3,18 @@
     <div class="grid">
       <ul id="hexGrid">
         <li class="hex" v-for="(product, index) in products" :key="index">
-          <div class="hexIn hoverBlur">
-            <a class="hexLink" href="#">
-              <div class="imgBackground img" :style="{'background-image': 'url(' + product.src + ')'}"></div>
+          <div class="hexIn">
+            <router-link class="hexLink" :to="`/product/${product.id}`">
+              <!-- <div class="imgBackground img" :style="{'background-image': 'url(' + product.src + ')'}"></div> -->
+              <div class="imgBackground img" :style="`background-image: url(${product.src})`"></div>
               <h1 class="hexTitle">{{product.name}}</h1>
-              <p v-if="product.discountPrice" class="hexText newPrice">
+              <p v-if="!!product.discountPrice" class="hexText newPrice">
                 {{product.discountPrice}} RSD
                 <!-- <span class="oldPrice">{{product.price}}</span> -->
                 <!-- <span class="newPrice">{{product.discountPrice}} RSD</span> -->
               </p>
               <p v-else class="hexText">{{product.price}} RSD</p>
-            </a>
+            </router-link>
           </div>
         </li>
       </ul>
@@ -26,21 +27,11 @@ import products from '../data/products';
 
 export default {
   name: 'hexagonal-grid',
-  // props: [],
-  // mounted() {
-
-  // },
   data() {
     return {
       products,
     };
   },
-  // methods: {
-
-  // },
-  // computed: {
-
-  // },
 };
 
 </script>
@@ -52,9 +43,9 @@ export default {
     margin: 0;
     padding: 0;
 }
-body {
-    background: rgb(123, 158, 158);
-}
+/* body {
+    background: var(--background-color);
+} */
 
 #hexGrid {
   display: flex;
@@ -128,12 +119,13 @@ body {
 }
 .hexTitle {
   bottom: 25%;
-  color: var(--lower-navbar-color);
+  color: var(--upper-navbar-color);
   text-align: center;
   /* font-size: 1.2em; */
   z-index: 1;
 }
 .hexText {
+  color: var(--lower-navbar-color);
   bottom: 10%;
   text-align: center;
 }
@@ -202,20 +194,14 @@ body {
 .hexIn:hover .hexLink {
   opacity: 1;
 } */
-.hoverBlur.hexIn:hover {
-  opacity: 1;
-}
-.hexIn:hover {
-  opacity: 1;
-}
-/* .hoverBlur {
+.hoverBlur {
+  /* -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  filter: blur(1px); */
   opacity: 0.5;
-} */
+}
 
 /*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
-/* .imgBackground {
-
-} */
 .hex:nth-child(2n+1) .imgBackground {
   background-color: rgba(39, 33, 60, 1);
 }

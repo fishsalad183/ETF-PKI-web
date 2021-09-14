@@ -4,15 +4,20 @@
       <form>
         <div class="form-group">
           <div class="col-3 mx-auto my-2">
-            <input type="text" class="form-control" id="userNameInput" placeholder="Korisničko ime"/>
+            <input type="text" class="form-control" id="userNameInput" placeholder="Korisničko ime" v-model="username"/>
           </div>
         </div>
         <div class="form-group">
           <div class="col-3 mx-auto my-2">
-            <input type="password" class="form-control" id="passwordInput" placeholder="Lozinka"/>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Lozinka" v-model="password"/>
           </div>
         </div>
-        <button type="submit" class="col-3 mx-auto my-2 btn btn-login">Uloguj se</button>
+        <button id="login" type="submit" @click="login" class="col-3 mx-auto my-2 btn btn-login">Uloguj se</button>
+        <div class="col-3 mx-auto my-2">
+          <label v-if="errWrongCredentials" for="login" class="errorMessage">
+            Pogrešni kredencijali!
+          </label>
+        </div>
       </form>
     </div>
     <hr class="row col-3 mx-auto my-2"/>
@@ -23,23 +28,28 @@
 </template>
 
 <script lang="js">
+import users from '../data/users';
 
 export default {
   name: 'login',
-  props: [],
-  mounted() {
-
-  },
   data() {
     return {
-
+      users,
+      username: '',
+      password: '',
+      errWrongCredentials: false,
     };
   },
   methods: {
-
-  },
-  computed: {
-
+    login() {
+      const user = this.users.find((u) => u.username === this.username && u.password === this.password);
+      if (!user) {
+        this.errWrongCredentials = true;
+      } else {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.$router.push('/');
+      }
+    },
   },
 };
 
@@ -59,5 +69,8 @@ export default {
 }
 .btn-login:hover {
   background-color: var(--rust-color);
+}
+.errorMessage {
+  color: var(--rust-color);
 }
 </style>

@@ -1,20 +1,21 @@
-<template>
+<template lang="html">
   <section class="home container">
     <div id="welcomeCarousel" class="carousel slide" data-bs-ride="carousel">
       <!-- <div class="carousel-indicators">
         <button v-for="(product, index) in carouselProducts" :key="index" class="carousel-indicator" :class="(index == 0) ? 'active' : ''" type="button" data-bs-slide-to="{{index}}"></button>
       </div> -->
       <div class="carousel-inner">
-        <div v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :style="{'background-image': 'url(' + product.src + ')'}">
+        <!-- <div v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :style="{'background-image': 'url(' + product.src + ')'}"> -->
+        <div v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :style="`background-image: url(${product.src})`">
           <div class="carousel-caption">
             <h1>AKCIJA</h1>
             <br/><br/>
             <h2>{{product.name}}</h2>
-            <p>
+            <h2>
               <span class="old-price">{{product.price}}</span>
               <span class="new-price">&nbsp;{{product.discountPrice}}</span>
               RSD
-            </p>
+            </h2>
           </div>
         </div>
       </div>
@@ -41,7 +42,10 @@ export default {
     };
   },
   computed: {
-    carouselProducts: () => products.sort(() => 0.5 - Math.random()).filter((p) => !!p.discountPrice).slice(0, 4), // Get 4 random items with discounts
+    carouselProducts: () => {
+      const productsCopy = JSON.parse(JSON.stringify(products)); // Copy array so that the original doesn't get modified by sorting
+      return productsCopy.sort(() => 0.5 - Math.random()).filter((p) => !!p.discountPrice).slice(0, 4); // Get 4 random items with discounts
+    },
   },
   mounted() {
     // $(document).ready(() => {
@@ -59,7 +63,7 @@ export default {
 
 <style scoped>
 .carousel {
-  background-color: var(--product-background-color-1);
+  background: linear-gradient(to right bottom, var(--product-background-color-1), var(--product-background-color-2));
   margin-top: 4rem;
 }
 .carousel-caption {
@@ -68,6 +72,9 @@ export default {
   color: var(--upper-navbar-color);
   bottom: 3rem;
   z-index: 10;
+}
+.carousel-caption h1 {
+  font-size: 46px;;
 }
 .old-price {
   text-decoration: line-through;

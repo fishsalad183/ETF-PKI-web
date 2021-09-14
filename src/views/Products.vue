@@ -12,21 +12,6 @@ export default {
   components: {
     HexagonalGrid,
   },
-  props: [],
-  mounted() {
-
-  },
-  data() {
-    return {
-
-    };
-  },
-  methods: {
-
-  },
-  computed: {
-
-  },
 };
 
 </script>

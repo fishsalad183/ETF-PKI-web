@@ -4,6 +4,9 @@ import About from '../views/About.vue';
 import Products from '../views/Products.vue';
 import Product from '../views/Product.vue';
 import Login from '../views/Login.vue';
+import Register from '../views/Register.vue';
+import Settings from '../views/Settings.vue';
+import Cart from '../views/Cart.vue';
 
 export default createRouter({
   history: createWebHistory(),
@@ -27,11 +30,27 @@ export default createRouter({
       path: '/product/:id',
       name: 'Product',
       component: Product,
+      props: true,
     },
     {
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register,
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
     },
   ],
 });

@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="container about">
-    <div class="row m-4">
+    <div class="row m-5">
       <p class="col">
         Pčelarska kuća „Medenjaci“ se snabdeva najfinijim pčelinjim proizvodima direktno
         iz sela za koje sigurno nikad niste čuli.
@@ -12,32 +12,15 @@
       </p>
     </div>
     <div class="row">
-      <img class="img-fluid m-4 mx-auto logo" src="../assets/logo_crop.png"/>
+      <img class="img-fluid mx-auto logo" src="../assets/logo_crop.png"/>
     </div>
   </section>
 </template>
 
 <script lang="js">
-
 export default {
   name: 'about',
-  props: [],
-  mounted() {
-
-  },
-  data() {
-    return {
-
-    };
-  },
-  methods: {
-
-  },
-  computed: {
-
-  },
 };
-
 </script>
 
 <style scoped>
