@@ -1,12 +1,16 @@
 import { createApp, h } from 'vue';
+import mitt from 'mitt';
 import App from './App.vue';
 import router from './router';
 import 'jquery/src/jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 
-createApp({
+const eventBus = mitt();
+
+const app = createApp({
   render: () => h(App),
-})
-  .use(router)
-  .mount('#app');
+});
+app.config.globalProperties.eventBus = eventBus;
+app.use(router);
+app.mount('#app');

@@ -209,7 +209,7 @@ export default {
   background-color: rgba(48, 50, 61, 1);
 }
 
-@media (min-width: 901px) { /* <- 4-3  hexagons per row */
+@media (min-width: 1001px) { /* <- 4-3  hexagons per row */
   #hexGrid {
     padding-bottom: 5.5%;
     font-size: 24px;
@@ -222,7 +222,7 @@ export default {
   }
 }
 
-@media (max-width: 900px) and (min-width: 601px) { /* <- 3-2  hexagons per row */
+@media (max-width: 1000px) and (min-width: 601px) { /* <- 3-2  hexagons per row */
   #hexGrid {
     padding-bottom: 7.4%;
     font-size: 14px;

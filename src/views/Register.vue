@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="register">
-    <h1>register Component</h1>
+
   </section>
 </template>
 

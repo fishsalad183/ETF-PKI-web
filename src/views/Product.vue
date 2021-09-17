@@ -1,8 +1,9 @@
 <template lang="html">
-  <section class="container product">
+  <section class="container">
     <div class="row mt-5">
-      <div class="col-md-4">
+      <div class="col-md-4 my-3">
         <HexagonImg :imageSrc="this.product.src"/>
+        <br/><br/>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-7 mt-5">
@@ -20,14 +21,14 @@
           <span v-else>
             Cena: {{this.product.price}} RSD
           </span>
-          <form class="my-3">
+          <div v-if="currentUser.type === 'customer'" class="my-3">
             Količina:&nbsp;
-            <select class="form-select-md">
+            <select class="form-select-md" id="amount">
               <option v-for="n in 10" :selected="n === 1 ? 'selected' : false" :key="n" :value="n">{{n}}</option>
             </select>
             <br/>
-            <button type="submit" class="col-md-4 my-3 btn">Dodaj u korpu</button>
-          </form>
+            <button class="col-md-4 my-3 btn" id="addToCart" type="submit" @click="addToCart">Dodaj u korpu</button>
+          </div>
         </h2>
       </div>
     </div>
@@ -35,7 +36,10 @@
 </template>
 
 <script lang="js">
+import $ from 'jquery';
+import CartItem from '../data/cartItem';
 import products from '../data/products';
+import users from '../data/users';
 import HexagonImg from '../components/HexagonImg.vue';
 
 export default {
@@ -54,15 +58,27 @@ export default {
       const { id } = this;
       return products.find((p) => p.id === +id);
     },
+    currentUser() {
+      return JSON.parse(localStorage.getItem('currentUser'));
+    },
+  },
+  methods: {
+    addToCart() {
+      const amount = Number($('#amount option:selected').text());
+
+      this.currentUser.cart.push(new CartItem(this.product, amount));
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      const userIndex = users.findIndex((u) => u.id === this.currentUser.id);
+      users.splice(userIndex, 1, this.currentUser);
+
+      this.$router.push('/cart');
+    },
   },
 };
 
 </script>
 
 <style scoped>
-/* .product {
-
-} */
 .description {
   font-size: 1.05em;
   text-align: justify;

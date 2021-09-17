@@ -1,4 +1,4 @@
-export default [
+const users = [
   {
     id: 1,
     name: 'Petar',
@@ -8,6 +8,7 @@ export default [
     type: 'customer',
     username: 'kupac',
     password: 'pass',
+    cart: [],
   },
   {
     id: 2,
@@ -20,3 +21,5 @@ export default [
     password: 'pass',
   },
 ];
+
+export default users;
