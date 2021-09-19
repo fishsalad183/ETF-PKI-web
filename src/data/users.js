@@ -9,6 +9,7 @@ const users = [
     username: 'kupac',
     password: 'pass',
     cart: [],
+    orders: [],
   },
   {
     id: 2,

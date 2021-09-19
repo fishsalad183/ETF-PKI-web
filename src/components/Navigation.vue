@@ -13,6 +13,23 @@
             ULOGUJ SE
           </router-link>
         </li>
+        <li v-if="currentUser?.type == 'salesman'" :key="currentUser" class="col-xxxl-1 nav-item">
+          <router-link to="/products/add" tag="button" class="btn btn-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            &nbsp;&nbsp;Dodaj proizvod
+          </router-link>
+        </li>
+        <li v-if="currentUser?.type == 'salesman'" :key="currentUser" class="col-xxxl-1 nav-item">
+          <router-link to="/orders" tag="button" class="btn btn-nav">
+            <svg g xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            &nbsp;&nbsp;Narudžbine
+          </router-link>
+        </li>
         <li v-if="currentUser?.type === 'customer'" :key="currentUser" class="col-xxxl-1 nav-item">
           <router-link to="/cart" tag="button" class="btn btn-nav">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">

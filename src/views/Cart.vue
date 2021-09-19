@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="container-fluid" :key="rerenderKey">
-    <div class="row mx-auto my-1 align-items-center" v-for="(item, index) in cart" :key="index">
+    <div class="row mx-auto my-1 align-items-center" v-for="(item, index) in this.currentUser.cart" :key="index">
       <div class="col-1">{{item.amount}}x</div>
       <div class="col-1"></div>
       <img class="col-1 img" :src="item.product.src"/>
@@ -16,7 +16,10 @@
       </button>
       <hr class="mt-2" />
     </div>
-    <div v-if="cart.length > 0" class="row mx-auto my-5">
+    <h1 v-if="orderSuccess" class="col my-5 successMessage">
+      Narudžbina uspešno obavljena
+    </h1>
+    <div v-if="this.currentUser.cart.length > 0" class="row mx-auto my-5">
       <div class="col-6"></div>
       <div class="col-6 total">
         <div class="row align-items-center">
@@ -26,14 +29,10 @@
           <button class="col-4 btn" type="submit" @click="order">Naruči</button>
         </div>
       </div>
-      <!-- <span class="col-1">Ukupno:</span>
-      <span class="col-2">{{totalPrice}} RSD</span>
-      <span class="col-1"></span>
-      <button class="col-2 btn" type="submit" @click="order">Naruči</button> -->
     </div>
-    <div v-else class="col my-5">
+    <h2 v-if="this.currentUser.cart.length === 0 && !orderSuccess" class="col my-5">
       Korpa je prazna
-    </div>
+    </h2>
   </section>
 </template>
 
@@ -45,34 +44,41 @@ export default {
   data() {
     return {
       rerenderKey: 0,
+      orderSuccess: false,
     };
   },
   computed: {
     currentUser() {
       return JSON.parse(localStorage.getItem('currentUser'));
     },
-    cart() {
-      return this.currentUser.cart;
-    },
     totalPrice() {
-      return this.cart.reduce((prev, cur) => prev + cur.priceIncludingDiscounts, 0);
+      return this.currentUser.cart.reduce((prev, cur) => prev + cur.priceIncludingDiscounts, 0);
     },
   },
   methods: {
     removeFromCart(index) {
-      const newCart = this.cart;
-      newCart.splice(index, 1);
-
-      this.currentUser.cart = newCart;
+      this.currentUser.cart.splice(index, 1);
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
 
       const userIndex = users.findIndex((u) => u.id === this.currentUser.id);
-      users[userIndex].cart = newCart;
+      users[userIndex].cart.splice(index, 1);
 
       this.rerenderKey += 1;
     },
     order() {
+      const cartCopy = JSON.parse(JSON.stringify(this.currentUser.cart));
+      cartCopy.id = this.generateUniqueID();
 
+      const userIndex = users.findIndex((u) => u.id === this.currentUser.id);
+      users[userIndex].orders.push(cartCopy);
+      users[userIndex].cart.splice(0, users[userIndex].cart.length);
+
+      this.currentUser.orders.push(cartCopy);
+      this.currentUser.cart.splice(0, this.currentUser.cart.length);
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+
+      this.orderSuccess = true;
+      this.rerenderKey += 1;
     },
   },
 };
@@ -96,5 +102,8 @@ export default {
 }
 .btn:hover {
   background-color: var(--rust-color);
+}
+.successMessage {
+  color: var(--discount-price-color);
 }
 </style>

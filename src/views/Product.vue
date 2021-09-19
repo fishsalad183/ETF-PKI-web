@@ -21,7 +21,7 @@
           <span v-else>
             Cena: {{this.product.price}} RSD
           </span>
-          <div v-if="currentUser.type === 'customer'" class="my-3">
+          <div v-if="this.currentUser?.type === 'customer'" class="my-3">
             Količina:&nbsp;
             <select class="form-select-md" id="amount">
               <option v-for="n in 10" :selected="n === 1 ? 'selected' : false" :key="n" :value="n">{{n}}</option>

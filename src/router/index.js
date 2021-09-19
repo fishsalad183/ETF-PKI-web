@@ -7,6 +7,8 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import Settings from '../views/Settings.vue';
 import Cart from '../views/Cart.vue';
+import AddProduct from '../views/AddProduct.vue';
+import Orders from '../views/Orders.vue';
 
 export default createRouter({
   history: createWebHistory(),
@@ -51,6 +53,16 @@ export default createRouter({
       path: '/cart',
       name: 'Cart',
       component: Cart,
+    },
+    {
+      path: '/orders',
+      name: 'Orders',
+      component: Orders,
+    },
+    {
+      path: '/products/add',
+      name: 'AddProduct',
+      component: AddProduct,
     },
   ],
 });

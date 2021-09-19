@@ -6,7 +6,7 @@
       </div> -->
       <div class="carousel-inner">
         <!-- <div v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :style="{'background-image': 'url(' + product.src + ')'}"> -->
-        <div v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :style="`background-image: url(${product.src})`">
+        <router-link tag="div" v-for="(product, index) in carouselProducts" :key="index" class="carousel-item" :class="(index == 0) ? 'active' : ''" :to="`/product/${product.id}`" :style="`background-image: url(${product.src})`">
           <div class="carousel-caption">
             <h1>AKCIJA</h1>
             <br/><br/>
@@ -17,7 +17,7 @@
               RSD
             </h2>
           </div>
-        </div>
+        </router-link>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>

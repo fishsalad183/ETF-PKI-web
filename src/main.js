@@ -12,5 +12,12 @@ const app = createApp({
   render: () => h(App),
 });
 app.config.globalProperties.eventBus = eventBus;
+app.config.globalProperties.generateUniqueID = (() => {
+  let id = 0;
+  return () => {
+    id += 1;
+    return id;
+  };
+})();
 app.use(router);
 app.mount('#app');
