@@ -3,7 +3,7 @@ const images = require.context('./images', true, /\.png$/);
 const products = [
   {
     id: 1,
-    name: 'Bagremov med 0.5kg',
+    name: 'Bagremov med 0,5kg',
     description: 'Bagremov med karakterišu prozirna žućkasta boja, veoma nežan ukus i izuzetno blagotvorno dejstvo na organizam. Pogotovo se preporučuje u slučaju respiratornih i gastrointestinalnih problema.',
     src: images('./proizvod_bagremov_med.png'),
     price: 420,
@@ -17,7 +17,7 @@ const products = [
   },
   {
     id: 3,
-    name: 'Lipov med 0.5kg',
+    name: 'Lipov med 0,5kg',
     description: 'Med svetle i mutne žućkaste boje, blagog i nešto neobičnijeg ukusa. Pogodan za osobe sa respiratornim i srčanim tegobama.',
     src: images('./proizvod_lipov_med.png'),
     price: 450,
@@ -31,7 +31,7 @@ const products = [
   },
   {
     id: 5,
-    name: 'Livadski med 0.5kg',
+    name: 'Livadski med 0,5kg',
     description: 'Livadski med skupljaju se dobija zahvaljujući trudu vrednih pčelica, koje obilaze mnogobrojne cvetiće po livadama. Reprezentativnog ukusa za medove, i sa obiljem zdravih supstanci, preporučuje se svima.',
     src: images('./proizvod_livadski_med.png'),
     price: 450,
@@ -46,7 +46,7 @@ const products = [
   },
   {
     id: 7,
-    name: 'Šumski med 0.5kg',
+    name: 'Šumski med 0,5kg',
     description: 'Sa najjačim ukusom među vrstama meda, kao i najvećim količinama minerala, ovaj med se najpre preporučuje zdravim osobama kako bi ostale zdrave. Poseduje veoma lepu tamnu ćilibarnu boju.',
     src: images('./proizvod_sumski_med.png'),
     price: 490,
@@ -62,7 +62,7 @@ const products = [
   },
   {
     id: 9,
-    name: 'Mleč 0.5kg',
+    name: 'Mleč 0,5kg',
     description: 'Izuzetno lepe beličaste boje i guste, ali i nežne teksture, matični mleč predstavlja kraljevski obrok - i to u bukvalnom smislu - jer ga najpre konzumira kraljica-matica u košnici. Prijatno!',
     src: images('./proizvod_mlec.png'),
     price: 990,
@@ -77,7 +77,7 @@ const products = [
   },
   {
     id: 11,
-    name: 'Medovača 0.5L',
+    name: 'Medovača 0,5L',
     description: 'Ništa lepše no otkinuti se od po-kila kvalitetne rakije. Pogotovo kad tako sladi i klizi.',
     src: images('./proizvod_medovaca.png'),
     price: 690,
