@@ -1,17 +1,14 @@
 <template lang="html">
-  <section class="hexagonal-grid">
+  <section>
     <div class="grid">
       <ul id="hexGrid">
         <li class="hex" v-for="(product, index) in products" :key="index">
           <div class="hexIn">
             <router-link class="hexLink" :to="`/product/${product.id}`">
-              <!-- <div class="imgBackground img" :style="{'background-image': 'url(' + product.src + ')'}"></div> -->
               <div class="imgBackground img" :style="`background-image: url(${product.src})`"></div>
               <h1 class="hexTitle">{{product.name}}</h1>
               <p v-if="!!product.discountPrice" class="hexText newPrice">
                 {{product.discountPrice}} RSD
-                <!-- <span class="oldPrice">{{product.price}}</span> -->
-                <!-- <span class="newPrice">{{product.discountPrice}} RSD</span> -->
               </p>
               <p v-else class="hexText">{{product.price}} RSD</p>
             </router-link>
@@ -37,15 +34,10 @@ export default {
 </script>
 
 <style scoped>
-/* .hexagonal-grid {
-} */
 * {
     margin: 0;
     padding: 0;
 }
-/* body {
-    background: var(--background-color);
-} */
 
 #hexGrid {
   display: flex;
@@ -121,7 +113,6 @@ export default {
   bottom: 25%;
   color: var(--upper-navbar-color);
   text-align: center;
-  /* font-size: 1.2em; */
   z-index: 1;
 }
 .hexText {
@@ -171,35 +162,6 @@ export default {
   opacity: 0;
   transition: opacity 0.5s;
 }
-.img:before {
-  /* background: rgba(var(--product-background-color-1), 1.0); */
-  opacity: 1;
-  /* background: rgba(39, 33, 60, 0.2); */
-}
-.img:after {
-  /* background: linear-gradient(to top, transparent, rgba(var(--product-background-color-1), 0.5), transparent); */
-  /* background: linear-gradient(to top, transparent, rgba(48, 50, 61, 0.5), transparent); */
-  /* background: rgba(48, 50, 61, 0.5); */
-  opacity: 1;
-}
-
-/*** HOVER EFFECT  **********************************************************************/
-/* .hexLink:hover h1, .hexLink:focus h1,
-.hexLink:hover p, .hexLink:focus p{
-  opacity: 1;
-  transition: 0.8s;
-}
-.hexIn:hover .img:before,
-.hexIn:hover .img:after,
-.hexIn:hover .hexLink {
-  opacity: 1;
-} */
-.hoverBlur {
-  /* -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  filter: blur(1px); */
-  opacity: 0.5;
-}
 
 /*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
 .hex:nth-child(2n+1) .imgBackground {
@@ -207,6 +169,13 @@ export default {
 }
 .hex:nth-child(2n) .imgBackground {
   background-color: rgba(48, 50, 61, 1);
+}
+.hex:hover .imgBackground {
+  background-color: var(--button-active-color);
+  transition: 0.5s all;
+}
+.hex .imgBackground {
+  transition: 0.5s all;
 }
 
 @media (min-width: 1001px) { /* <- 4-3  hexagons per row */
@@ -225,7 +194,7 @@ export default {
 @media (max-width: 1000px) and (min-width: 601px) { /* <- 3-2  hexagons per row */
   #hexGrid {
     padding-bottom: 7.4%;
-    font-size: 14px;
+    font-size: 16px;
   }
   .hex {
     width: 33.333%; /* = 100 / 3 */
